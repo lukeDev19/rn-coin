@@ -1,4 +1,5 @@
-import coinSaga from './coins';
+import coinsSaga from './coins';
+import coinSaga from './coin';
 import marketsSaga from './markets';
 
-export default [coinSaga, marketsSaga];
+export default [coinsSaga, marketsSaga, coinSaga];

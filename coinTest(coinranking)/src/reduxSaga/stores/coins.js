@@ -9,6 +9,7 @@ const coins = createSlice({
     isMoreFetching: false,
     errorText: null,
     stats: {},
+    priceHistoryData: [],
   },
   reducers: {
     updateValue: (state, {payload}) => {

@@ -97,4 +97,10 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.activeGreen,
   },
+  chartToolTip: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    fontSize: 18,
+    padding: 4,
+  },
 });

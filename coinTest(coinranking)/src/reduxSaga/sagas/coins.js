@@ -36,7 +36,8 @@ function* getMoreCoinsSaga({payload}) {
     yield put(coins.actions.getMoreCoinsFailure({errorText}));
   }
 }
-export default function* coinSaga() {
+
+export default function* coinsSaga() {
   yield takeEvery(coins.actions.getCoins, getCoinsSaga);
   yield takeEvery(coins.actions.getMoreCoins, getMoreCoinsSaga);
 }

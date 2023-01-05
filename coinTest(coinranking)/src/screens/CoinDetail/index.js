@@ -96,7 +96,15 @@ const CoinDetails = ({navigation, route}) => {
               <LineChart height={150}>
                 <LineChart.Path color={colors.activeGreen} />
                 <LineChart.CursorCrosshair color="hotpink">
-                  <LineChart.Tooltip style={styles.chartToolTip} />
+                  <LineChart.Tooltip style={styles.chartToolTip}>
+                    <LineChart.PriceText
+                      precision={item.price > 100 ? 4 : 10}
+                      format={({value}) => {
+                        'worklet';
+                        return `$${value}`;
+                      }}
+                    />
+                  </LineChart.Tooltip>
                   <LineChart.Tooltip position="bottom" style={styles.chartToolTip}>
                     <LineChart.DatetimeText />
                   </LineChart.Tooltip>

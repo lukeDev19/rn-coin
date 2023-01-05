@@ -39,6 +39,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  chartActivity: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 150,
+  },
   greenText: {
     color: colors.activeGreen,
     fontSize: 13,

@@ -1,7 +1,7 @@
 import React, {useEffect, useLayoutEffect, useState, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {View, Text, TouchableOpacity, ScrollView, FlatList, Alert} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Alert} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {LineChart} from 'react-native-wagmi-charts';
@@ -91,7 +91,7 @@ const CoinDetails = ({navigation, route}) => {
           )}
         </View>
         <View style={styles.chartContainer}>
-          {!!chartData.length && (
+          {!!chartData.length && !coinSelector.isFetching && (
             <LineChart.Provider data={chartData}>
               <LineChart height={150}>
                 <LineChart.Path color={colors.activeGreen} />
@@ -103,6 +103,11 @@ const CoinDetails = ({navigation, route}) => {
                 </LineChart.CursorCrosshair>
               </LineChart>
             </LineChart.Provider>
+          )}
+          {coinSelector.isFetching && (
+            <View style={styles.chartActivity}>
+              <ActivityIndicator />
+            </View>
           )}
 
           <View style={styles.chartLabelContainer}>

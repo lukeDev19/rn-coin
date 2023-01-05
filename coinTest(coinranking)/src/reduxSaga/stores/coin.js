@@ -14,6 +14,7 @@ const coin = createSlice({
     getCoinPriceHistory: state => {
       state.isFetching = true;
       state.errorText = null;
+      state.data = [];
     },
     getCoinPriceHistorySuccess: (state, {payload}) => {
       state.isFetching = false;

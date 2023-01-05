@@ -6,7 +6,7 @@ import {coin} from '../stores';
 function* getCoinPriceHistorySaga({payload}) {
   try {
     const result = yield call(getCoinPriceHistory, payload);
-    console.info('result', result);
+    console.info('result', result.data.history.length);
     if (result.status === 'success') {
       yield put(coin.actions.getCoinPriceHistorySuccess(result.data));
     } else {

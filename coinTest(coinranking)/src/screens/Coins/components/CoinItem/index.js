@@ -1,21 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, TouchableOpacity, Text, Image} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {colors} from '../../../../themes';
 import {styles} from './styles';
+import {getCoinIcon} from '../../../../utils';
 
 const CoinItem = ({item, index, onPress}) => {
-  let hasFile = false;
+  const [image, setImage] = useState({uri: getCoinIcon(item.symbol)});
+
+  const onErrorImageLoad = () => {
+    setImage(require(`../../../../../assets/crypto/generic.png`));
+  };
 
   return (
     <TouchableOpacity style={styles.coinItemContainer} onPress={onPress}>
-      {item.iconUrl.includes('.png') ? <Image source={{uri: item.iconUrl}} style={styles.coinIcon} /> : null}
-      {item.iconUrl.includes('.svg') ? (
-        <Image
-          source={require(`../../../../../assets/crypto/${hasFile ? item.symbol.toLowerCase() : 'generic'}.png`)}
-          style={styles.coinIcon}
-        />
-      ) : null}
+      <Image source={image} style={styles.coinIcon} onError={onErrorImageLoad} />
       <View style={styles.coinItemInfoContainer}>
         <View>
           <Text style={styles.whiteText}>{item.symbol}</Text>

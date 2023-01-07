@@ -3,11 +3,12 @@ export const getCoinIcon = coinName => {
 };
 
 export const convertChartData = data => {
-  return data
+  const res = data
     .map((item, index) => {
       if (index % (data.length > 1000 ? 100 : 10) === 0)
-        return {value: parseFloat(item.price), timestamp: item.timestamp * 1000};
+        return {value: parseFloat(item.price) || 0, timestamp: item.timestamp * 1000};
       return null;
     })
     .filter(item => !!item);
+  return res;
 };
